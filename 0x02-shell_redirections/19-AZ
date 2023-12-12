@@ -1,0 +1,3 @@
+#!/bin/bash
+IFS= read -r buffer
+echo "$bufferi" | sed 's/A/Z/g' | sed 's/c/e/g
