@@ -1,0 +1,2 @@
+#!/bin/ls
+chmod u+x hello
