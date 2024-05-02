@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#This script adds the while and if
+i=1
+while [ "$i" -ne 11 ];do
+	echo "Best School"
+	if [ "$i" -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	i="$((i+1))"
+done
