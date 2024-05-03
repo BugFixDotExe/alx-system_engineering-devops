@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #a Bash script that displays lines containing the bash word
-ps -o user= -o pid= -o pcpu= -o pmem= -o vsz= -o rss= -o tty= -o stat= -o start= -o cputime= -o args=-f -C bash
+ps -o user= -o pid= -o pcpu= -o pmem= -o vsz= -o rss= -o tty= -o stat= -o start_time= -o cputime= -o args= --forest -C bash
 # shellcheck disable=SC2009
