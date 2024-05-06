@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#a manage_my_process Bash script that:
+    #Indefinitely writes I am alive! to the file /tmp/my_process
+    #In between every I am alive! message, the program should pause for 2 seconds
+
+# script 101-manage_my_process that manages manage_my_process
+
+command=$1
+if [ $# -gt 1 ];
+then
+	echo "Usage: manage_my_process {start|stop|restart}"
+	exit
+fi
+case "$command" in
+	start)
+		echo "manage_my_process started" && ./manage_my_process &
+		;;
+	stop)
+		pkill -f manage_my_process
+		echo "stop ya!"
+		;;
+	restart)
+		echo "restart ya!"
+		;;
+	*)
+		echo "Usage: manage_my_process {start|stop|restart}"
+esac
