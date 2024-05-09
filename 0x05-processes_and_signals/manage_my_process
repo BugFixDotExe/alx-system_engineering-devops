@@ -3,8 +3,14 @@
 
 command=$1
 
+trap cleanup SIGTERM
+cleanup()
+{
+	echo "manage_my_process stopped"
+	exit
+}
 while true
 do
-	echo "I am alive!" > /tmp/my_process
+	sudo -b echo "I am alive!" >> /tmp/my_process &
 	sleep 2
 done

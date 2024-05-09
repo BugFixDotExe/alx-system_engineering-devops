@@ -13,11 +13,11 @@ then
 fi
 case "$command" in
 	start)
-		echo "manage_my_process started" && ./manage_my_process &
+		echo "manage_my_process started" && echo $$ > /var/run/my_process.pid
+		./manage_my_process &
 		;;
 	stop)
-		pkill -f manage_my_process
-		echo "stop ya!"
+		pgrep -f manage_my_process | xargs kill
 		;;
 	restart)
 		echo "restart ya!"
