@@ -1,0 +1,36 @@
+Links to images:
+Link 1: https://imgur.com/undefined
+Link 2: https://imgur.com/oMXQVW6
+Link 3: https://imgur.com/zLAsTUv
+
+
+Q: Questions
+A: Answers
+
+Q: What distribution algorithm your load balancer is configured with and how it works
+A: I am using the Round-Robin balancing algorithm, this is where every request get's distributed accross all the servers and back again to the start of the servers.
+
+Q: Is your load-balancer enabling an Active-Active or Active-Passive setup, explain the difference between both
+A: My load-balancer is using the Active-Active setup
+
+A: The key difference between between the Active-Active and the Active-Passive is, the Active-Active has both or all servers serving request that come into the servers
+but with the Active-Passive setup one server does all the serving while the other wait for when there is maybe a SPOF on the first server or when load sharing has to take place.
+
+Q: How a database Primary-Replica (Master-Slave) cluster works
+A: In a primary-replica (master-slave) database cluster, the primary node serves as the main point of read and write operations, while the replica nodes (also known as secondary nodes or slave nodes) replicate the data from the primary node. This setup provides redundancy and scalability to the database system.
+
+Q: What is the difference between the Primary node and the Replica node in regard to the application
+A: 	Primary Node: The primary node is responsible for handling write operations and ensuring data consistency. It serves as the authoritative source of data and is typically optimized for high-performance read and write operations. The application interacts directly with the primary node for write operations.
+
+	Replica Nodes: Replica nodes primarily serve read operations and provide scalability and fault tolerance to the database system. They replicate data from the primary node and can handle read queries to offload the primary node, distribute the read load, and improve overall system performance. The application can direct read queries to replica nodes to improve responsiveness and reduce the load on the primary node. However, replica nodes usually do not accept write operations directly; they only replicate data from the primary node.
+
+You must be able to explain what the issues are with this infrastructure:
+
+Q: Where are SPOF
+A: In this implementation there are no SPOF
+
+Q: Security issues (no firewall, no HTTPS)
+A: In this implementation no firewall was implemented, allowing for unsecure access from the internet
+A: No HTTPS was employed allowing for back and forth communication between server and client on an unsecure network
+A: No monitoring was implemented, before a server crashes or after a server crashes, we would have no way of metigating or preventing it when ever this happens for we have no way of monitoring anything.
+
