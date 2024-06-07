@@ -1,0 +1,37 @@
+Q == Questions
+A == Answers
+
+URL TO IMAGE: https://imgur.com/3h3ix2B
+
+Q: What is a server ?
+A: A server is a computer much learger than a personal computer, which serves the role of always listening to request and responding back with the requsted file if any.
+
+Q: What is the role of the domain name ?
+A:  Domain names are often used to identify services provided through the Internet, such as websites, email services and more
+
+Q: What type of DNS record www is in www.foobar.com ?
+A: The DNS record for www.foobar.com will be the A(Address) Record
+
+Q: What is the role of the web server ?
+A: A web server role is to direct every request that comes into the server to the appropriate route or server that would see the request fuffiled.
+
+Q: What is the role of the application server ?
+A: The application server has the role of taking the request from the web server and giving it a response in form of data or if need be taking the request further down to the database server, it basically acts as a gatekeeper to information or the database.
+
+Q: What is the role of the database ?
+A: A database is meant for storing information for long term querying and if need be sending over a network
+
+Q: What is the server using to communicate with the computer of the user requesting the website ?
+A: The server uses HTTP request for communication or a HTTPS for a more secure connection.
+
+
+You must be able to explain what the issues are with this infrastructure:
+Q: SPOF
+A: The single point of failure, becomes a problem when a downtime arises, this would render all traffic to the SPOF server useless.
+
+Q: Downtime when maintenance needed (like deploying new code web server needs to be restarted)
+A: This also acts as a SPOF, all traffic to this server during it's researt will not be received and served.
+
+Q: Cannot scale if too much incoming traffic
+A: This type of problem can exist if there exist no load balancing, allowing for redirection of incoming traffic to less busy servers.
+
