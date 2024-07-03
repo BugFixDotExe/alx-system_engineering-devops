@@ -3,8 +3,6 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo apt -y install ufw
-sudo ufw allow OpenSSH  # Allow SSH access
-sudo ufw enable         # Enable firewall
-sudo ufw allow 'Nginx HTTP'
+sudo systemctl start nginx
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+sudo pkill -SIGHUP nginx
