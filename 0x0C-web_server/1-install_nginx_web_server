@@ -1,11 +1,36 @@
-#!/usr/bin/env bash
-# A Bash script that configures a new Ubuntu machine
-# with the installation of nginx
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo apt -y install ufw
-#sudo ufw enable
-#sudo ufw allow 'Nginx HTTP'
+#!/bin/bash
+
+# Update package lists and install nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Ensure nginx is configured to listen on port 80
+sudo sed -i 's/listen\ \[::\]:80\ default\_server\;/listen\ 80\ default\_server\;/g' /etc/nginx/sites-available/default
+
+# Restart nginx without using systemctl
 sudo kill -s HUP $(pidof nginx)
-#echo "Hello World" > /var/www/html/index.nginx-debian.html
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Create index.html with "Hello World!"
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
+
+# Verify nginx is running
+nginx_pid=$(pidof nginx)
+if [ -z "$nginx_pid" ]; then
+    echo "Nginx is not running after configuration."
+    exit 1
+else
+    echo "Nginx is running with PID $nginx_pid."
+fi
+
+# Test nginx response using curl
+nginx_response=$(curl -s http://localhost/)
+if [[ "$nginx_response" == *"Hello World!"* ]]; then
+    echo "Nginx successfully serving 'Hello World!' at root."
+else
+    echo "Failed to verify 'Hello World!' response from nginx."
+    exit 1
+fi
+
+# Exit successfully
+exit 0
+
