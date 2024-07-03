@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Update package lists and install nginx
 sudo apt-get update
@@ -33,4 +33,3 @@ fi
 
 # Exit successfully
 exit 0
-
