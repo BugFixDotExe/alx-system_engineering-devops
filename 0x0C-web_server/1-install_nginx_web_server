@@ -4,5 +4,7 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo systemctl start nginx
+sudo systemctl enable nginx
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 sudo pkill -SIGHUP nginx
+sudo systemctl status nginx
