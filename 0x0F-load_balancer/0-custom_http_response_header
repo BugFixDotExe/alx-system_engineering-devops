@@ -12,4 +12,4 @@ sudo sed -i '/http {/a \ \ \ \ add_header X-Served-By "$hostname";' /etc/nginx/n
 sudo nginx -t
 
 # If configuration is valid, restart nginx
-sudo systemctl restart nginx
+service nginx restart
