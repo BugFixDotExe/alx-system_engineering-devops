@@ -1,0 +1,9 @@
+#!/usr/bin/env bash  
+
+# A Bash script that Configures
+# Nginx so that its HTTP response
+# contains a custom header
+#  (on web-01 and web-02)
+
+sudo sed -i '/http {/a \ \ \ \ add_header X-Served-By "$hostname";' /etc/nginx/nginx.conf
+sudo systemctl restart nginx
