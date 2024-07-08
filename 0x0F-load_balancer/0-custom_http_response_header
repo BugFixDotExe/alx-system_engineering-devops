@@ -5,5 +5,12 @@
 # contains a custom header
 #  (on web-01 and web-02)
 
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo nginx
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+sudo pkill -SIGHUP nginx
+sudo nginx -t
+sudo nginx -s reload
 sudo sed -i '/http {/a \ \ \ \ add_header X-Served-By "$hostname";' /etc/nginx/nginx.conf
 sudo systemctl restart nginx
