@@ -17,7 +17,7 @@ sudo nginx
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
 # Add a custom header to nginx configuration
-sudo sed -i '/http {/a \ \ \ \ add_header X-Served-By "$hostname";' /etc/nginx/nginx.conf
+sudo sed -i '/http {/a \ \ \ \ add_header X-Served-By '"$hostname"';' /etc/nginx/nginx.conf
 
 # Check nginx configuration syntax
 sudo nginx -t

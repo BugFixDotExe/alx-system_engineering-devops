@@ -17,7 +17,7 @@ frontend http_front
 backend http_backend
         mode http
         balance roundrobin
-        server 151068-web-01 100.25.29.153
-        server 151068-web-02 54.197.46.53" >> /etc/haproxy/haproxy.cfg
+        server [151068]-web-01 100.25.29.153
+        server [151068]-web-02 54.197.46.53" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
