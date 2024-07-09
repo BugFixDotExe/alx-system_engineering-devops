@@ -1,5 +1,4 @@
 #!/usr/bin/env bash  
-
 # A Bash script that Configures
 # Nginx so that its HTTP response
 # contains a custom header
