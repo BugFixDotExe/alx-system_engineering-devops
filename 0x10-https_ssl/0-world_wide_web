@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# A Bash Script that shows information about it's subdomain
+#
+############################################################################################
+# Requirements:										   #
+# Your Bash script must accept 2 arguments:						   #
+#											   #
+#   --> domain:										   #
+#       * type: string									   #
+#       * what: domain name to audit							   #
+#       * mandatory: yes								   #
+#   --> subdomain:									   #
+#       * type: string									   #
+#       * what: specific subdomain to audit						   #
+#       * mandatory: no									   #
+#										 	   #
+# Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION] #
+############################################################################################
+
+website_info () {
+	# The sub
+	domain_name=$1
+	# uncomment to see the arry of sub domains
+	# echo "did it work: $2"
+	full_url=$(echo | awk -v str1="$domain_name" -v str2="$2" '{print str2 "." str1}')
+	# uncomment to see full url
+	# echo "Full url: $full_url"
+	#sub_domain=$(dig "$full_url" | grep -A1 'ANSWER SECTION:' | awk -F. '/"$(sub_domain)"/ {print $1}' | xargs)
+	record_type=$(dig "$full_url" | grep -A1 'ANSWER SECTION:' | awk '{print $4}' | xargs)
+	destination=$(dig "$full_url" | grep -A1 'ANSWER SECTION:' | awk '{print $5}' | xargs)
+	echo "The subdomain $2 is a $record_type record and points to $destination"
+}
+
+# If this was to run then it's almost sure that
+# There exist a sub domain name
+if [ "$#" -gt 1 ]; then
+	website_info "$1" "$2"
+
+# else, then there was no sub-domain name thus the following name must be attached to the domain
+# --> www
+# --> lb-01
+# --> web-01
+# --> web-02 - in this specific order
+else
+	sub_domains=( "www" "lb-01" "web-01" "web-02" )
+	for i in "${sub_domains[@]}"
+	do
+		website_info "$1" "$i"
+	done
+fi
