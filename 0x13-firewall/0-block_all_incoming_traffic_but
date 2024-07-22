@@ -1,0 +1,4 @@
+sudo ufw default deny incoming
+sudo ufw allow in "ssh"
+sudo ufw allow in "https"
+sudo ufw allow in "http"
