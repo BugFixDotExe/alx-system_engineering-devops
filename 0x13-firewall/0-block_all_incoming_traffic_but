@@ -1,4 +1,8 @@
+sudo apt install ufw
 sudo ufw default deny incoming
-sudo ufw allow in "ssh"
-sudo ufw allow in "https"
-sudo ufw allow in "http"
+sudo ufw default allow outgoing
+sudo ufw allow in ssh
+sudo ufw allow OpenSSH
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
