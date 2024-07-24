@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This is a bash script for creating a backup of all the database(s)
+#######################################################################
+#		5-mysql_backup			    		      #
+#######################################################################
+# This is a script that aims to:				      #
+#  -> Dump all the databases as root				      #
+#  -> Accept the password to root				      #
+#  -> Using tar create and archieve with the date when it was created #
+#######################################################################
+# This command will create the dump
+mysqldump --all-databases --user="root" --password="$1" > backup.sql
+# This command will get the current day, month and year
+date=$( date +%d-%m-%Y )
+# This command will create an archive using the date variable as a name.
+tar -czvf "${date}.tar.gz" backup.sql
