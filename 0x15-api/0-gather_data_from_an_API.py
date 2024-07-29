@@ -24,9 +24,10 @@ if __name__ == "__main__":
             for item in user_content:
                 if item.get("completed") is True:
                     completed += 1
+                    task_list.append(item.get("title"))
                 elif item.get("completed") is False:
                     pending += 1
-                task_list.append(item.get("title"))
+
     except Exception as Bugfixdotexe:
         print("Error SON!")
 
