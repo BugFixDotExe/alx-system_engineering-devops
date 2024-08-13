@@ -8,6 +8,13 @@ import requests
 
 
 def number_of_subscribers(subreddit):
+    """
+        number_of_subscribers: a func that retirves the count of subscribers
+        Args:
+            subreddit(string): a string of a valid subreddit
+        Return:
+            An int of the number of subscribers or 0 for none
+    """
     response = requests.get(f'https://www.reddit.com/r/{subreddit}/about.json',
                             allow_redirects=False)
     if response.status_code == requests.codes.ok:

@@ -1,20 +1,14 @@
 #!/usr/bin/python3
-"""This script strives to  queries the Reddit API
-and prints the titles of the first 10 hot posts
-listed for a given subreddit
+"""This script that queries the Reddit API
+returns a list containing the titles of all
+hot articles for a given subreddit, done
+recursively.
 """
 
 import requests
 
 
-def top_ten(subreddit):
-    """
-        top_ten: a func that returns the top 10 hot posts
-        Args (string):
-                A valid sub reddit
-        Returns:
-                Returns the titles or NONE
-    """
+def recurse(subreddit, hot_list=[]):
     headers = {'limit': '10'}
     response = requests.get(f'https://www.reddit.com/r/{subreddit}/top.json',
                             headers, allow_redirects=False)
