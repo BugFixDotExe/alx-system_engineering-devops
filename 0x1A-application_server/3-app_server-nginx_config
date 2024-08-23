@@ -1,0 +1,21 @@
+server {
+    location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+) {
+    rewrite ^/airbnb-dynamic/number_odd_or_even/(\d+)$ /number_odd_or_even/$1 break;
+    add_header X-Debug-URL $request_uri;
+    proxy_pass http://0.0.0.0:5001;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+
+    location ~ ^/number_odd_or_even/(\d+) {
+        proxy_pass http://0.0.0.0:5001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
